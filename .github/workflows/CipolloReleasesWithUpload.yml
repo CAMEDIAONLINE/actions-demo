@@ -1,0 +1,35 @@
+name: CipolloReleasesWithUpload
+
+on:
+  push:
+    branches: ["main"]
+    tags:
+      - 'v*'
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+    # checkout code
+    - uses: actions/checkout@v3
+    
+    # create crelease
+    - uses: ncipollo/release-action@v1
+      id: create_release
+      with:
+        artifacts: "release.tar.gz,foo/*.txt"
+        #bodyFile: "body.md"
+
+    # upload artifact
+    - name: Upload artifact
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ github.token }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./bin/actions-demo.zip
+        asset_name: actions-demo.zip
+        asset_content_type: application/zip

@@ -15,10 +15,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
     - name: Generate artifact zip
-      uses: 10up/action-wordpress-plugin-build-zip@stable
+      uses: byteever/action-build-zip@master
       with:
-        build-dir: "artifact/actions-demo.zip"
-
+        filename: "actions-demo.zip"
   release-project:
     name: Create Release    
     needs: create-artifact
@@ -31,6 +30,6 @@ jobs:
     - name: Create GitHub Release      
       uses: ncipollo/release-action@v1
       with:
-        artifacts: "artifact/actions-demo.zip"
+        artifacts: "actions-demo.zip"
         #bodyFile: "body.md"
   

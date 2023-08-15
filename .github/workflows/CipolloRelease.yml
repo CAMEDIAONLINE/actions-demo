@@ -8,14 +8,29 @@ on:
       - v*
 
 jobs:
+  create-artifact:
+    name: Create release artifact    
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Generate artifact zip
+      uses: 10up/action-wordpress-plugin-build-zip@stable
+      with:
+        build-dir: "artifact/actions-demo.zip"
 
-  build:
+  release-project:
+    name: Create Release    
+    needs: create-artifact
     runs-on: ubuntu-latest
     permissions:
       contents: write
     steps:
-    - uses: actions/checkout@v3
-    - uses: ncipollo/release-action@v1
+    - name: Checkout Code
+      uses: actions/checkout@v3
+    - name: Create GitHub Release      
+      uses: ncipollo/release-action@v1
       with:
-        artifacts: "release.tar.gz,foo/*.txt"
+        artifacts: "artifact/actions-demo.zip"
         #bodyFile: "body.md"
+  

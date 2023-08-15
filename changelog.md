@@ -1,6 +1,10 @@
 # CHANGELOG
 
 
+## v0.9.0
+
+* Changed zip action in CipolloReleases
+
 ## v0.8.0
 
 * Changes for testing Releasing using Github Action CipolloReleases updated

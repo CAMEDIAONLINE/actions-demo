@@ -2,9 +2,10 @@ name: CipolloReleases
 
 on:
   push:
-    branches: ["main"]
+    branches: 
+      - main
     tags:
-      - 'v*'
+      - v*
 
 jobs:
 

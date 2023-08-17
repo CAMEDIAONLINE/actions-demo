@@ -1,4 +1,4 @@
-name: AZBlog Release
+name: Release
 
 on:
   push:

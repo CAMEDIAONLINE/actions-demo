@@ -1,5 +1,12 @@
 # CHANGELOG
 
+
+## v0.9.5
+
+* Renamed Workflow to `Release` and workflow file to `release.yml`
+* Tryout to use ncipollo release action to upload zip artifact directly when
+creating release
+
 ## v0.9.4
 
 * Changes for testing Releasing using Github Action azblogfilter.yml - Test 3

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.9.2
+
+* Changes for testing Releasing using Github Action azblogfilter.yml
+
 ## v0.9.1
 
 * Rerun last changes

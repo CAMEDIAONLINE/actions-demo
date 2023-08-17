@@ -6,7 +6,9 @@ on:
       - main
     tags:
       - v*
-
+env:
+  ZIP_PATH: ./actions-demo.zip
+  
 jobs:
   build_release:    
     name: build_release
@@ -21,25 +23,20 @@ jobs:
         id: generate-zip
         uses: byteever/action-build-zip@master
         with:
-          filename: "actions-demo.zip"        
-      - name: release
-        #uses: actions/create-release@v1
+          filename: ${{ env.ZIP_PATH }}
+      
+      # Create Github Release
+      - name: release        
         uses: ncipollo/release-action@v1
         id: create_release
-        #with:
-        #  draft: false
-        #  prerelease: false
-        #  release_name: ${{ steps.version.outputs.version }}
-        #  tag_name: ${{ github.ref }}
-        #  body_path: CHANGELOG.md
-        #env:
-        #  GITHUB_TOKEN: ${{ github.token }}      
-      - name: upload artifact
+
+      # Upload Artifact
+      - name: upload artifact        
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: actions-demo.zip
-          asset_name: actions-demo.zip
+          upload_url: ${{ steps.create_release.outputs.upload_url }}          
+          asset_path: ${{ env.ZIP_PATH }}
+          asset_name: ${{ env.ZIP_PATH }}
           asset_content_type: application/zip

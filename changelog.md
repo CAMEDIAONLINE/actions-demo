@@ -1,5 +1,10 @@
 # CHANGELOG
 
+
+## v1.0.1
+
+* Changed to commit mode in `release.yml`
+
 ## v1.0.0
 
 * Made a dummy change to then release it in version 1.0.0

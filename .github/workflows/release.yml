@@ -8,6 +8,7 @@ on:
       - v*.*.*
 env:
   ZIP_FILE: actions-demo.zip
+  VERSION: ${GITHUB_REF#refs/*/}
   
 jobs:
   build_release:    
@@ -36,12 +37,11 @@ jobs:
         with:
           commitMode: true
        
-      # Use changelog-generator to create a changelog file for this release
-      - name: Changelog generator
-        uses: dittrichlucas/changelog-generator@main
+      # Use keep-a-changelog-new-release to create a changelog file for this release
+      - name: Update changelog
+        uses: thomaseizinger/keep-a-changelog-new-release@v1
         with:
-          token: ${{ github.token }}
-          repo: ${{ github.repository }}          
+          tag: ${{ env.VERSION }}
 
       # Create Github Release
       - name: release        

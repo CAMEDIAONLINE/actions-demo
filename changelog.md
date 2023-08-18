@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v1.0.0
+
+* Made a dummy change to then release it in version 1.0.0
+
 ## v0.9.9
 
 * Changed `release.yml` : Auto create changelog inline body and probably runs only once if tag is pushed

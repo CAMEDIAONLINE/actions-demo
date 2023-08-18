@@ -14,3 +14,8 @@ License: MIT
 
 // If this file is called directly, abort!!!
 defined('ABSPATH') or die('No access in here! Why did you even try?');
+
+function dummy()
+{
+    echo "dummy func";
+}

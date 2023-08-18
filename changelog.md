@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v0.9.6
+
+* Cleaned up `release.yml` and added this changelog as bodyFile for release body
 
 ## v0.9.5
 

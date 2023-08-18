@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.9.9
+
+* Changed `release.yml` : Auto create changelog inline body and probably runs only once if tag is pushed
+
 ## v0.9.8
 
 * Changed `release.yml` added changelog.md as artifact to download separately

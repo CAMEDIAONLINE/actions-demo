@@ -26,28 +26,24 @@ jobs:
         with:
           type: 'zip'
           filename: ${{ env.ZIP_FILE }}                  
-          exclusions: '*.git* /*node_modules/* .editorconfig'          
-      
-      # Create changelog body
-      - name: Build Changelog
-        id: release_notes
-        uses: mikepenz/release-changelog-builder-action@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          commitMode: true
+          exclusions: '*.git* /*node_modules/* .editorconfig'                      
        
       # Use keep-a-changelog-new-release to create a changelog file for this release
-      - name: Update changelog
-        uses: thomaseizinger/keep-a-changelog-new-release@v1
-        with:
-          tag: ${{ env.VERSION }}
+      #- name: Update changelog
+      #  uses: thomaseizinger/keep-a-changelog-new-release@v1
+      #  with:
+      #    tag: ${{ env.VERSION }}
+
+      - name: Create changelog
+        id: changelog
+        uses: gandarez/changelog-action@v{latest}
+              
 
       # Create Github Release
       - name: release        
         uses: ncipollo/release-action@v1        
         with:
-          artifacts: ${{ env.ZIP_FILE }}, changelog.md
-          bodyFile: changelog.md
-          #body:  ${{steps.release_notes.outputs.changelog}}
+          artifacts: ${{ env.ZIP_FILE }}
+          #bodyFile: CHANGELOG.md
+          body: ${{ steps.changelog.outputs.changelog }}
           generateReleaseNotes: true

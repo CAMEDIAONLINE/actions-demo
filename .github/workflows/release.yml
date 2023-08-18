@@ -35,12 +35,19 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           commitMode: true
-                  
+       
+      # Use changelog-generator to create a changelog file for this release
+      - name: Changelog generator
+        uses: dittrichlucas/changelog-generator@main
+        with:
+          token: ${{ github.token }}
+          repo: ${{ github.repository }}          
+
       # Create Github Release
       - name: release        
         uses: ncipollo/release-action@v1        
         with:
           artifacts: ${{ env.ZIP_FILE }}, changelog.md
-          #bodyFile: changelog.md
-          body:  ${{steps.release_notes.outputs.changelog}}
+          bodyFile: changelog.md
+          #body:  ${{steps.release_notes.outputs.changelog}}
           generateReleaseNotes: true

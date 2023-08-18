@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.9.8
+
+* Changed `release.yml` added changelog.md as artifact to download separately
+
 ## v0.9.7
 
 * Changed `release.yml` commented out bodyFile for release body and added generateReleaseNotes flag with true

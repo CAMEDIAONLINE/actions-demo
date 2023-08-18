@@ -30,6 +30,6 @@ jobs:
       - name: release        
         uses: ncipollo/release-action@v1        
         with:
-          artifacts: ${{ env.ZIP_FILE }}
+          artifacts: ${{ env.ZIP_FILE }}, changelog.md
           #bodyFile: changelog.md
           generateReleaseNotes: true

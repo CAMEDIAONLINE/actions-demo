@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## v1.0.7
+
+* another action for auto generating changelog...
 
 ## v1.0.1
 

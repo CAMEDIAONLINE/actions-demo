@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## v0.9.7
+
+* Changed `release.yml` commented out bodyFile for release body and added generateReleaseNotes flag with true
+
 ## v0.9.6
 
 * Cleaned up `release.yml` and added this changelog as bodyFile for release body

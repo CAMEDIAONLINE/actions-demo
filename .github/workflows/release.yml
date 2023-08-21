@@ -37,23 +37,15 @@ jobs:
       #  with:
       #    tag: ${{ env.VERSION }}
 
-      #- name: Create changelog
-      #  id: changelog
-      #  uses: gandarez/changelog-action@v1.2.0
-              
-      - name: Generate conventional changelog
-        id: changelog
-        uses: TriPSs/conventional-changelog-action@v4
-        with: 
-          github-token: ${{ secrets.github_token }}
-          output-file: "false" 
+      - name: Create changelogs
+        id: changelogs
+        uses: heineiuo/create-changelogs@master
 
       # Create Github Release
-      - name: release        
-        if: ${{ steps.changelog.outputs.skipped == 'false' }}
+      - name: release                
         uses: ncipollo/release-action@v1        
         with:
           artifacts: ${{ env.ZIP_FILE }}
           #bodyFile: CHANGELOG.md
-          body: ${{ steps.changelog.outputs.clean_changelog  }}
+          body: ${{ steps.changelogs.outputs.changelogs }}
           generateReleaseNotes: true

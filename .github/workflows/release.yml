@@ -34,14 +34,15 @@ jobs:
           exclusions: '*.git* /*node_modules/* .editorconfig'                      
        
       - name: Create changelogs
-        id: changelogs
-        uses: heineiuo/create-changelogs@master
-      
+        id: changelog
+        #uses: heineiuo/create-changelogs@master
+        uses: vedhavyas/generate-changelog@v4
+
       # Create Github Release
       - name: release                
         uses: ncipollo/release-action@v1        
         with:
           artifacts: ${{ env.ZIP_FILE }}
           #bodyFile: CHANGELOG.md
-          body: ${{ steps.changelogs.outputs.changelogs }}
+          body: ${{ steps.changelog.outputs.changelog }}
           generateReleaseNotes: true

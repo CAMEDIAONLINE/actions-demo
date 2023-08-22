@@ -37,9 +37,15 @@ jobs:
       #  with:
       #    tag: ${{ env.VERSION }}
 
-      - name: Create changelogs
-        id: changelogs
-        uses: heineiuo/create-changelogs@master
+      #- name: Create changelogs
+      #  id: changelogs
+      #  uses: heineiuo/create-changelogs@master
+
+      - name: Create changelog
+        id: changelog
+        uses: ryan-cha/auto-changelog-between-tags@latest
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}        
 
       # Create Github Release
       - name: release                
@@ -47,5 +53,5 @@ jobs:
         with:
           artifacts: ${{ env.ZIP_FILE }}
           #bodyFile: CHANGELOG.md
-          body: ${{ steps.changelogs.outputs.changelogs }}
+          body: ${{ steps.changelog.outputs.changelog }}
           generateReleaseNotes: true

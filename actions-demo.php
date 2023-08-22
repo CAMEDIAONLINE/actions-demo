@@ -35,3 +35,8 @@ function lastTest()
 {
     return true
 }
+
+function newTest() 
+{
+    return false
+}

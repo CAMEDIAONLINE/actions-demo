@@ -19,3 +19,8 @@ function dummy()
 {
     echo "dummy func";
 }
+
+function dummy2() 
+{
+    return 0    
+}

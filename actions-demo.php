@@ -24,3 +24,8 @@ function dummy2()
 {
     return 0    
 }
+
+function dummy3() 
+{
+    return 1    
+}

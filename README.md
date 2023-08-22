@@ -4,24 +4,8 @@ Different Workflow Action Tests
 
 ## Workflows
 
-### MasterDeployCI
+Tryout of several workflows to automatic release:
 
-Status: **disabled**
-Uses Actions: 
-* actions/checkout@v1
-* anothrNick/github-tag-action@master
-
-### CipolloRelease
-
-Status: **disabled**
-Uses Actions:
-* actions/checkout@v3
-* ncipollo/release-action@v1
-
-### CipolloReleaseWithUpload
-
-Status: **enabled**
-Uses Actions:
-* actions/checkout@v3
-* ncipollo/release-action@v1
-* actions/upload-release-asset@v1
+1. Create a changelog of all commits between two tags
+2. Create release and include the changelog
+3. Add a zip-file as artifact to download

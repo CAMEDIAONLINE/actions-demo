@@ -29,3 +29,9 @@ function dummy3()
 {
     return 1    
 }
+
+
+function lastTest() 
+{
+    return true
+}

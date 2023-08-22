@@ -43,6 +43,6 @@ jobs:
         uses: ncipollo/release-action@v1        
         with:
           artifacts: ${{ env.ZIP_FILE }}
-          #bodyFile: CHANGELOG.md
           body: ${{ steps.changelog.outputs.changelog }}
-          generateReleaseNotes: true
+          #bodyFile: CHANGELOG.md          
+          #generateReleaseNotes: true

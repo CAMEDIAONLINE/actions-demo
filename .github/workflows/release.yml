@@ -33,16 +33,25 @@ jobs:
           filename: ${{ env.ZIP_FILE }}                  
           exclusions: '*.git* /*node_modules/* .editorconfig'                      
        
-      - name: Create changelogs
-        id: changelog
+      #- name: Create changelogs
+      #  id: changelog
         #uses: heineiuo/create-changelogs@master
-        uses: vedhavyas/generate-changelog@v4.0.2
+      #  uses: vedhavyas/generate-changelog@v4.0.2
+
+
+      - name: Create Changelog
+        id: changelog
+        uses: requarks/changelog-action@v1
+        with:
+          token: ${{ github.token }}
+          tag: ${{ github.ref_name }}
 
       # Create Github Release
       - name: release                
         uses: ncipollo/release-action@v1        
         with:
           artifacts: ${{ env.ZIP_FILE }}
-          body: ${{ steps.changelog.outputs.changelog }}
+          body: ${{ steps.changelog.outputs.changes }}
+          #body: ${{ steps.changelog.outputs.changelog }}
           #bodyFile: CHANGELOG.md          
           #generateReleaseNotes: true

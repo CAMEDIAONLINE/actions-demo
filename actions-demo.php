@@ -17,26 +17,26 @@ defined('ABSPATH') or die('No access in here! Why did you even try?');
 
 function dummy()
 {
+    return 0;
+}
+
+function dummy2()
+{
     echo "dummy func";
 }
 
-function dummy2() 
+function dummy3()
 {
-    return 0    
-}
-
-function dummy3() 
-{
-    return 1    
+    return 1;
 }
 
 
-function lastTest() 
+function lastTest()
 {
-    return true
+    return true;
 }
 
-function newTest() 
+function newTest()
 {
-    return false
+    return false;
 }

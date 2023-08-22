@@ -40,3 +40,8 @@ function newTest()
 {
     return false;
 }
+
+function release()
+{
+    echo "release version";
+}

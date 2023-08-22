@@ -22,6 +22,8 @@ jobs:
       # Checkout Code
       - name: checkout
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
       # Create zip-file
       - name: Generate artifact zip        
@@ -31,27 +33,15 @@ jobs:
           filename: ${{ env.ZIP_FILE }}                  
           exclusions: '*.git* /*node_modules/* .editorconfig'                      
        
-      # Use keep-a-changelog-new-release to create a changelog file for this release
-      #- name: Update changelog
-      #  uses: thomaseizinger/keep-a-changelog-new-release@v1
-      #  with:
-      #    tag: ${{ env.VERSION }}
-
-      #- name: Create changelogs
-      #  id: changelogs
-      #  uses: heineiuo/create-changelogs@master
-
-      - name: Create changelog
-        id: changelog
-        uses: ryan-cha/auto-changelog-between-tags@latest
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}        
-
+      - name: Create changelogs
+        id: changelogs
+        uses: heineiuo/create-changelogs@master
+      
       # Create Github Release
       - name: release                
         uses: ncipollo/release-action@v1        
         with:
           artifacts: ${{ env.ZIP_FILE }}
           #bodyFile: CHANGELOG.md
-          body: ${{ steps.changelog.outputs.changelog }}
+          body: ${{ steps.changelogs.outputs.changelogs }}
           generateReleaseNotes: true
